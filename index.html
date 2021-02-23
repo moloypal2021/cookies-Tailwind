@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-xVVam1KS4+Qt2OrFa+VdRUoXygyKIuNWUUUBZYv+n27STsJ7oDOHJgfF0bNKLMJF" crossorigin="anonymous" />
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
+    <title>Cookies</title>
+</head>
+
+<body>
+
+    <!-- Footer Cookies Section -->
+    <!--  Tab Toggle Class Inline alpine.js added -->
+    <div class="fixed bottom-0 w-full z-50" x-data="{
+      openTab: 'true',
+      tabOpenClass: 'open-tab-effect',
+      tabCloseClass: 'close-tab-effect',
+      tabOpenBtnClass: 'bg-yellow-200 transition ease-linear duration-500',
+      tabCloseBtnClass: 'bg-white transition ease-linear duration-500',
+      tabCaretOn: 'rotate-0 transform ease-linear duration-700',
+      tabCaretOff: 'rotate-180 transform ease-linear duration-500',
+
+    }">
+        <!--  Tab Toggle Section -->
+        <div class="bg-yellow-200" x-show="openTab === 'true'"
+            :class="openTab === 'true' ? tabOpenClass : tabCloseClass"
+            x-transition:enter="transition ease-linear duration-700"
+            x-transition:enter-start="translate-y-full transform" x-transition:enter-end="translate-y-px transform"
+            x-transition:leave="transition ease-linear duration-700" x-transition:leave-start="translate-y-px transform"
+            x-transition:leave-end="translate-y-full transform">
+            <div class="container relative mx-auto h-full sm:px-0 px-4">
+                <div class="grid lg:grid-cols-12 sm:grid-cols-2 gap-8">
+                    <!--  Content Section -->
+                    <div class="lg:col-span-7">
+                        <div class="py-4">
+                            <h3 class="sm:text-lg text-base leading-normal text-yellow-900 font-bold mb-2">This Website
+                                Uses
+                                Cookies
+                            </h3>
+                            <p class="text-sm leading-snug text-black">Cookies are small data files we use to
+                                improve your experience, such as saving your preferences or showing you
+                                personalized ads. Turn this off at any time by using this switch, or visit our <a
+                                    href="#" class="text-yellow-900 underline">Cookie Policy</a>
+                                page for more info.</p>
+                        </div>
+                    </div>
+                    <!--  Box Section -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-gray-100 border border-yellow-500 border-dashed rounded-lg p-4 my-4"
+                            x-data="buttonAnimation()">
+                            <div
+                                class="flex md:flex-row sm:flex-col flex-no-wrap flex-grow-0 flex-shrink-0 justify-between items-start">
+                                <!--  Box Content Section -->
+                                <div class="sm:pr-8 pr-2 pb-2">
+                                    <h6 class="text-base leading-relaxed text-yellow-900 font-bold mb-1">Cookies: <span
+                                            x-show="button === 'true'" class="text-green-700">ON</span> <span
+                                            x-show="button === 'false'" class="text-green-700">OFF</span></h6>
+                                    <p class="text-sm leading-snug text-black" x-show="button === 'true'">You consent to
+                                        us setting cookies in
+                                        accordance with our <a href="#" class="text-yellow-900 underline">Cookie
+                                            Policy</a>
+                                    </p>
+                                    <p class="text-sm leading-snug text-black" x-show="button === 'false'">We are not
+                                        tracking or saving any data while you use this site.</p>
+                                </div>
+                                <div class="md:w-auto sm:w-full w-auto">
+                                    <!--  Button Section -->
+                                    <div class="relative flex items-center w-40 h-24 mx-auto"
+                                        @click="button === 'true' && 'false' ? button = 'false' : button = 'true'">
+                                        <div class="rounded-full flex items-center justify-between px-4"
+                                            :class="button === 'true' ? btnOnClass : btnOffClass">
+                                            <p class="text-xs font-bold leading-tight py-4 mr-16">ON</p>
+                                            <p class="text-xs font-bold leading-tight py-4 ml-2">OFF</p>
+
+                                        </div>
+                                        <div class="bg-white w-24 h-24 rounded-full absolute flex items-center justify-center"
+                                            style="padding: 2px;"
+                                            :class="button === 'true' ? btnOnplateAnimation : btnOffplateAnimation">
+                                            <div class="w-full h-full rounded-full border"
+                                                :class="button === 'true' ? btnOnplateBorder : btnOffplateBorder"
+                                                style="padding: 1px;">
+                                                <div class="w-full h-full rounded-full border p-2"
+                                                    :class="button === 'true' ? btnOnplateBorder : btnOffplateBorder">
+                                                    <div
+                                                        class="flex items-center justify-center w-full h-full bg-gray-200 rounded-full">
+                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                            width="100px" height="100px" viewBox="0 0 100 100"
+                                                            enable-background="new 0 0 100 100" xml:space="preserve">
+                                                            <g id="middle-crumb"
+                                                                :class="button === 'true' ? middleCrumbOn : middleCrumbOff">
+                                                                <polygon fill=" #C3996B"
+                                                                    points="27.7,45.6 34.6,44.4 34.3,40.8 32.2,38.3 25.6,39.7 " />
+                                                                <polygon fill="#754C28"
+                                                                    points="27.3,43.9 30.1,44.4 31.1,40.1 28.2,39 25.6,41.4 " />
+                                                            </g>
+                                                            <g id="bottom-pieces"
+                                                                :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff">
+                                                                <polygon fill="#C3996B"
+                                                                    points="73.1,63 73.6,61.2 80.3,61.5 82.5,63.8 82.5,65.5 79,66.1 75.3,65.3 "
+                                                                    :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="85.3,67.7 85.8,65.4 85,64 82.1,64.2 82.1,66.8 83.5,67.7 "
+                                                                    :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="85.4,66.1 85.3,67.3 87,67.7 86.5,66.5 85.7,65.9 "
+                                                                    :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="81.6,65.9 81.6,65.4 82.3,65.3 82.2,66.4 81.8,66.4 "
+                                                                    :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="81.2,65.9 81.2,65.6 81.6,65.5 81.8,65.9 81.8,66.4 81.1,66.2 "
+                                                                    :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="80.4,65.6 80.3,66 80.7,66.2 81.3,66.1 81.3,65.6 80.8,65.5 "
+                                                                    :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="73.6,63.9 74,63.8 74.5,64.1 74.4,64.5 73.6,64.2 "
+                                                                    :class="button === 'true' ? bottomPiecesOn : bottomPiecesOff" />
+                                                            </g>
+
+                                                            <g id="top-wedge"
+                                                                :class="button === 'true' ? topWedgeOn : topWedgeOff">
+                                                                <polyline fill="#C3996B"
+                                                                    points="1.9,45.2 0,39.8 3,30.9 9.1,23.7 9.5,23.5 12.4,19.4 13.1,18 17.3,10.4 23.2,9.3 29,5.9 33.4,2 43.7,0.4 45.3,1.1 50.8,0.8 57.6,1.2 62.9,0 68.3,3.9 76,7.8 87.3,13.6 90.7,21.3 93.8,26.2 85.5,27.4 73.1,33.2 66.7,39 64.2,38.7 54.8,40 50.5,42.2 47.4,42.3 42.6,40.3 36.6,39.6 " />
+                                                                <g>
+                                                                    <polygon fill="#754C28"
+                                                                        points="25,35.4 19.1,40.7 22.2,43.4 27,41.3 32.6,40.6 31.7,37 " />
+                                                                    <polygon fill="#754C28"
+                                                                        points="48.5,24.2 48,29 53.1,31.2 56,26.9 52.7,24.1 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="75.8,14.9 68.7,16.3 67.1,23.9 73.9,25.5 78.1,21.3 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="28.2,16.5 30.9,22.3 35.5,21 36.2,16.8 33.4,13.8 	" />
+                                                                </g>
+                                                            </g>
+                                                            <g id="top-pieces"
+                                                                :class="button === 'true' ? topPiecesOn : topPiecesOff">
+                                                                <polygon fill="#C3996B"
+                                                                    points="61.9,37.1 63.1,38.4 66.7,39 68.8,38.1 70.6,35.7 69.8,33.4 65.6,33.4 61.9,35.5 "
+                                                                    :class="button === 'true' ? topPiecesOn : topPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="70.8,32 69.3,34.1 70.8,35.7 72.6,34.3 73.1,33.2 " />
+                                                                <polygon fill="#C3996B"
+                                                                    points="61.2,37.1 63.1,37.2 63.7,38.5 62.8,39.1 61,39 60.9,37.6 "
+                                                                    :class="button === 'true' ? topPiecesOn : topPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="61.6,36.1 62.5,36.4 62.7,37.4 62.2,37.6 61.4,37.3 " />
+                                                                <polygon fill="#C3996B"
+                                                                    points="60.5,37.9 61.2,37.6 61.5,38.1 61.4,39 60.3,39 60.2,38.2 "
+                                                                    :class="button === 'true' ? topPiecesOn : topPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="73.2,31.7 72.4,32 71.8,33.1 72.9,33.5 74.3,32.8 "
+                                                                    :class="button === 'true' ? topPiecesOn : topPiecesOff" />
+                                                                <polygon fill="#C3996B"
+                                                                    points="74,31.9 73.5,32.2 73.5,32.5 73.9,32.7 74.5,32.7 75,32.3 "
+                                                                    :class="button === 'true' ? topPiecesOn : topPiecesOff" />
+                                                            </g>
+                                                            <g id="bottom-wedge"
+                                                                :class="button === 'true' ? bottomWedgeOn : bottomWedgeOff">
+                                                                <polygon fill="#C3996B"
+                                                                    points="1.9,45.2 1.7,50.3 2.2,57.4 1.1,59.1 0.2,65.5 3.9,67.5 5.6,71.6 7.3,73.2 14,83.1 14.7,87.9  19.4,88.4 19.4,88.4 28.6,94.4 37.2,99.7 43.9,99.3 50.8,99.8 56.3,99.5 60.9,100 66,97.4 72.4,94.8 79.6,92.2 82.6,88.1 88.5,82 88.8,81.8 98.4,70.6 94.8,70.3 92.8,71.3 90.8,70.5 88.8,69.3 86.9,67.6 85.3,67.2 85.2,67.6 83.6,67.5 82.2,66.3 80.4,65.8 79.1,66 75.3,65.3 73.2,63 73.6,61.8 70.7,58.3 67.1,56.8 60.2,51.1 56.6,50.7 55.3,50.1 51.1,45.4 47.9,43.8  46.9,41.9 42.7,40.2 36.6,39.5 14.6,42.8 " />
+                                                                <g>
+                                                                    <polygon fill="#754C28"
+                                                                        points="35,80.1 34.5,83.8 41.9,85.6 43.5,78.7 39.3,77.7 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="37,59.8 37,65.4 45.5,66.6 49,61 43.7,56.4 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="61.6,75.6 61,81.2 68.5,82.8 70,80.3 67.4,74.4 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="15.6,61 14.6,66.2 18.6,68.9 22.6,64.7 20.2,61.9 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="26.3,39.4 20.5,41.9 26.9,47.4 33.1,42.9 32.1,38.7 	" />
+                                                                </g>
+                                                            </g>
+                                                            <g id="right-wedge"
+                                                                :class="button === 'true' ? rightWedgeOn : rightWedgeOff">
+                                                                <polygon fill="#C3996B"
+                                                                    points="98.4,70.6 100,59.1 99.6,56.9 99.6,56.9 100,50.3 99.8,46 100,41.7 97.9,36.1 97.6,35.1 97.4,32.6 97.6,28.4 94.9,26.3 93.8,26.2 85.1,26.8 77.1,31.1 72.9,33.2 67.2,38.6 64.1,38.3 54.5,39.6 50.6,41.7 46.9,41.9 47.7,44 51,45.5 55.2,50.2 56.6,50.8 60.2,51.2 67,56.9 70.6,58.4 73.5,61.8 80.1,61.9 82.1,64.2 84.6,64.3 86.2,67.1 88.7,69.4 90.8,70.6 92.8,71.5 94.9,70.4 " />
+                                                                <g>
+                                                                    <polygon fill="#754C28"
+                                                                        points="75.8,36.7 77.5,39.6 84.3,41.5 85.8,34.7 78.5,34.3 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="59.8,47.6 59.8,53.6 66.5,55.5 69.8,49.5 63.2,45.9 	" />
+                                                                    <polygon fill="#754C28"
+                                                                        points="87.4,53 83.9,57.7 88.2,62.2 93.9,60.6 93.9,53 	" />
+                                                                </g>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar Section Start -->
+        <section class="bg-white box-border relative shadow">
+            <div class="container relative mx-auto h-full m:px-0 px-4">
+                <div class="flex justify-between">
+                    <!-- Bottom Bar Avater -->
+                    <div class="py-4">
+                        <a href="https://www.twitter.com/dsenneff" target="_blank"><img
+                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/128542/avatar.jpg"
+                                alt="Profile photo of Darin Senneff" class="w-12 h-12 rounded-full"></a>
+                    </div>
+                    <!-- Bottom Bar Toggle Button -->
+                    <div class="">
+                        <button class="py-5 px-4 rounded-br-xl rounded-bl-xl flex items-center focus:outline-none"
+                            @click="openTab === 'true' && 'false' ? openTab = 'false' : openTab = 'true'"
+                            :class="openTab === 'true' ? tabOpenBtnClass : tabCloseBtnClass"><img
+                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/128542/cookie-icon.svg"
+                                alt="Cookie Toggle" class="w-6 h-6 mr-2">
+                            <i class="fas fa-caret-down" :class="openTab === 'true' ? tabCaretOn : tabCaretOff"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Bottom Bar Section End -->
+    </div>
+</body>
+
+<script>
+    function buttonAnimation() {
+        return {
+            button: 'true',
+            // Button On Off Animation Class Added
+            btnOnClass: 'bg-gradient-to-b from-green-500 to-green-300 text-white transition ease-linear duration-1000',
+            btnOffClass: 'bg-gradient-to-b from-gray-400 to-gray-200 border text-black transition ease-linear duration-1000',
+
+            // Button Plate Animation Class Added
+            btnOnplateAnimation: 'translate-x-16 mr-4 shadow-plate-on transform transition border-blue-600 ease-in duration-1000',
+            btnOffplateAnimation: 'translate-x-0 shadow-plate-off transform transition border-red-600 ease-out duration-1000',
+            btnOnplateBorder: 'border-blue-400  rotate-180 transform ease-in duration-1000',
+            btnOffplateBorder: 'border-red-400 rotate-0 transform ease-out duration-1000',
+
+            // Button Plate Pizza Animation Class Added
+            middleCrumbOff: 'rightWedgeOn rotate-4deg translate-x-1 transform ease-in duration-700',
+            middleCrumbOn: 'rightWedgeOn scale-100 transform ease-out duration-700',
+            bottomPiecesOff: 'rightWedgeOn rotate-4deg -translate-x-2 -translate-y-1 transform ease-in duration-700',
+            bottomPiecesOn: 'rightWedgeOn scale-100 transform ease-out duration-700',
+            topPiecesOff: 'rightWedgeOn rotate-4deg -translate-y-1 transform ease-in duration-700',
+            topPiecesOn: 'rightWedgeOn transform ease-out duration-700',
+            rightWedgeOff: 'rightWedgeOn scale-75 translate-x-5 translate-y-2 transform ease-in duration-700',
+            rightWedgeOn: 'scale-100 transform ease-out duration-700',
+            topWedgeOff: 'rightWedgeOn scale-75 translate-x-3 transform ease-in duration-700',
+            topWedgeOn: 'scale-100 transform ease-out duration-700',
+            bottomWedgeOff: 'rightWedgeOn scale-75 translate-x-3 translate-y-5 rotate-4deg transform ease-in duration-700',
+            bottomWedgeOn: 'scale-100 transform ease-out duration-700',
+
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,15 @@
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.rotate-4deg {
+    rotate: "4deg";
+}
+
+.shadow-plate-on {
+    box-shadow: 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.shadow-plate-off {
+    box-shadow: -3px 5px 0 rgba(0, 0, 0, 0.1);
+}
